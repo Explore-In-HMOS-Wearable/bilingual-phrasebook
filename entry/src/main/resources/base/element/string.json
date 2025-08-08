@@ -1,0 +1,132 @@
+{
+  "string": [
+    {
+      "name": "current_locale",
+      "value": "English"
+    },
+    {
+      "name": "module_desc",
+      "value": "Bilingual Phrasebook"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "Explore useful phrases"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "Phrasebook"
+    },
+    {
+      "name": "list_title",
+      "value": "Phrases"
+    },
+    {
+      "name": "app_language",
+      "value": "Language:"
+    },
+    {
+      "name": "toggle_language",
+      "value": "Toggle Language"
+    },
+    {
+      "name": "greetings",
+      "value": "Greetings"
+    },
+    {
+      "name": "basic",
+      "value": "Basic"
+    },
+    {
+      "name": "help",
+      "value": "Help & Emergency"
+    },
+    {
+      "name": "travel",
+      "value": "Travel"
+    },
+    {
+      "name": "shopping",
+      "value": "Shopping"
+    },
+    {
+      "name": "emergency",
+      "value": "Emergencies"
+    },
+    {
+      "name": "greeting_hello",
+      "value": "Hello"
+    },
+    {
+      "name": "greeting_good_morning",
+      "value": "Good morning"
+    },
+    {
+      "name": "greeting_good_night",
+      "value": "Good night"
+    },
+    {
+      "name": "basic_thank_you",
+      "value": "Thank you"
+    },
+    {
+      "name": "basic_please",
+      "value": "Please"
+    },
+    {
+      "name": "basic_yes",
+      "value": "Yes"
+    },
+    {
+      "name": "basic_no",
+      "value": "No"
+    },
+    {
+      "name": "help_i_need_help",
+      "value": "I need help"
+    },
+    {
+      "name": "help_where_is_toilet",
+      "value": "Where is the bathroom?"
+    },
+    {
+      "name": "help_call_police",
+      "value": "Call the police!"
+    },
+    {
+      "name": "travel_where_is_airport",
+      "value": "Where is the airport?"
+    },
+    {
+      "name": "travel_i_have_reservation",
+      "value": "I have a reservation"
+    },
+    {
+      "name": "travel_how_much_is_ticket",
+      "value": "How much is the ticket?"
+    },
+    {
+      "name": "shopping_how_much",
+      "value": "How much is this?"
+    },
+    {
+      "name": "shopping_do_you_accept_card",
+      "value": "Do you accept credit cards?"
+    },
+    {
+      "name": "shopping_i_want_this",
+      "value": "I want this one"
+    },
+    {
+      "name": "emergency_call_ambulance",
+      "value": "Call an ambulance!"
+    },
+    {
+      "name": "emergency_im_lost",
+      "value": "I am lost"
+    },
+    {
+      "name": "emergency_my_phone_is_stolen",
+      "value": "My phone was stolen"
+    }
+  ]
+}

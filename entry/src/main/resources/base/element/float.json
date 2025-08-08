@@ -1,0 +1,36 @@
+{
+  "float": [
+    {
+      "name": "page_text_font_size",
+      "value": "50fp"
+    },
+    {
+      "name": "list_header_size",
+      "value": "20fp"
+    },
+    {
+      "name": "phrase_font_size",
+      "value": "16fp"
+    },
+    {
+      "name": "margin_2",
+      "value": "2vp"
+    },
+    {
+      "name": "margin_4",
+      "value": "4vp"
+    },
+    {
+      "name": "margin_8",
+      "value": "8vp"
+    },
+    {
+      "name": "margin_12",
+      "value": "12vp"
+    },
+    {
+      "name": "margin_16",
+      "value": "16vp"
+    }
+  ]
+}

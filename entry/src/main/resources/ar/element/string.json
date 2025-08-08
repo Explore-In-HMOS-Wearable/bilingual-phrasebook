@@ -1,0 +1,132 @@
+{
+  "string": [
+    {
+      "name": "current_locale",
+      "value": "العربية"
+    },
+    {
+      "name": "module_desc",
+      "value": "كتاب العبارات ثنائي اللغة"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "استكشف العبارات المفيدة"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "كتاب العبارات"
+    },
+    {
+      "name": "list_title",
+      "value": "العبارات"
+    },
+    {
+      "name": "app_language",
+      "value": "اللغة:"
+    },
+    {
+      "name": "toggle_language",
+      "value": "تبديل اللغة"
+    },
+    {
+      "name": "greetings",
+      "value": "التحيات"
+    },
+    {
+      "name": "basic",
+      "value": "الأساسيات"
+    },
+    {
+      "name": "help",
+      "value": "المساعدة والطوارئ"
+    },
+    {
+      "name": "travel",
+      "value": "السفر"
+    },
+    {
+      "name": "shopping",
+      "value": "التسوق"
+    },
+    {
+      "name": "emergency",
+      "value": "الطوارئ"
+    },
+    {
+      "name": "greeting_hello",
+      "value": "مرحبًا"
+    },
+    {
+      "name": "greeting_good_morning",
+      "value": "صباح الخير"
+    },
+    {
+      "name": "greeting_good_night",
+      "value": "تصبح على خير"
+    },
+    {
+      "name": "basic_thank_you",
+      "value": "شكرًا"
+    },
+    {
+      "name": "basic_please",
+      "value": "من فضلك"
+    },
+    {
+      "name": "basic_yes",
+      "value": "نعم"
+    },
+    {
+      "name": "basic_no",
+      "value": "لا"
+    },
+    {
+      "name": "help_i_need_help",
+      "value": "أحتاج إلى مساعدة"
+    },
+    {
+      "name": "help_where_is_toilet",
+      "value": "أين الحمام؟"
+    },
+    {
+      "name": "help_call_police",
+      "value": "اتصل بالشرطة!"
+    },
+    {
+      "name": "travel_where_is_airport",
+      "value": "أين المطار؟"
+    },
+    {
+      "name": "travel_i_have_reservation",
+      "value": "لدي حجز"
+    },
+    {
+      "name": "travel_how_much_is_ticket",
+      "value": "كم سعر التذكرة؟"
+    },
+    {
+      "name": "shopping_how_much",
+      "value": "بكم هذا؟"
+    },
+    {
+      "name": "shopping_do_you_accept_card",
+      "value": "هل تقبلون البطاقات الائتمانية؟"
+    },
+    {
+      "name": "shopping_i_want_this",
+      "value": "أريد هذا"
+    },
+    {
+      "name": "emergency_call_ambulance",
+      "value": "اتصل بالإسعاف!"
+    },
+    {
+      "name": "emergency_im_lost",
+      "value": "لقد ضعت"
+    },
+    {
+      "name": "emergency_my_phone_is_stolen",
+      "value": "تمت سرقة هاتفي"
+    }
+  ]
+}
