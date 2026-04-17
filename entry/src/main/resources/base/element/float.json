@@ -1,8 +1,8 @@
 {
   "float": [
     {
-      "name": "page_text_font_size",
-      "value": "50fp"
+      "name": "list_title_size",
+      "value": "22fp"
     },
     {
       "name": "list_header_size",
@@ -11,6 +11,14 @@
     {
       "name": "phrase_font_size",
       "value": "16fp"
+    },
+    {
+      "name": "phrase_secondary_font_size",
+      "value": "12fp"
+    },
+    {
+      "name": "arc_button_clearance",
+      "value": "60vp"
     },
     {
       "name": "margin_2",

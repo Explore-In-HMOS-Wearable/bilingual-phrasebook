@@ -7,6 +7,9 @@ export struct PhraseTitleComponent {
   build() {
     Text(this.title)
       .fontSize($r('app.float.list_header_size'))
-      .fontColor(Color.Yellow)
+      .fontColor($r('app.color.phrase_title_color'))
+      .fontWeight(FontWeight.Medium)
+      .textCase(TextCase.UpperCase)
+      .letterSpacing(1.5)
   }
 }

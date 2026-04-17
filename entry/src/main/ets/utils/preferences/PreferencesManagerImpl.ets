@@ -23,11 +23,20 @@ export default class PreferencesManagerImpl extends PreferencesManager {
   }
 
   async setValue(key: string, value: string): Promise<void> {
-    await this.dataPreferences?.put(key, value)
-    await this.dataPreferences?.flush()
+    try {
+      await this.dataPreferences?.put(key, value)
+      await this.dataPreferences?.flush()
+    } catch (error) {
+      Logger.error(`PreferencesManager setValue failed: ${(error as BusinessError).message}`)
+    }
   }
 
   async getValue(key: string, defValue: string): Promise<string> {
-    return (await this.dataPreferences?.get(key, defValue) as string) ?? defValue
+    try {
+      return (await this.dataPreferences?.get(key, defValue) as string) ?? defValue
+    } catch (error) {
+      Logger.error(`PreferencesManager getValue failed: ${(error as BusinessError).message}`)
+      return defValue;
+    }
   }
 }

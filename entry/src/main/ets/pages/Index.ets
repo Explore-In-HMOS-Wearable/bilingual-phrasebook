@@ -11,43 +11,44 @@ import {
   ColorMetrics,
   ArcButtonStyleMode
 } from '@kit.ArkUI';
-import { PhraseItem, PhraseItemType } from '../viewmodel/PhrasesDataSource';
+import { PhraseItem, PhraseItemType, PhrasesDataSource } from '../viewmodel/PhrasesDataSource';
 import { PhrasesViewModel } from '../viewmodel/PhrasesViewModel';
 import { PhraseCardComponent } from '../components/PhraseCardComponent';
 import { SizeConstants } from '../constants/SizeConstants';
 import { PhraseTitleComponent } from '../components/PhraseTitleComponent';
+import { AppLocale } from '../model/AppLocale';
 
 interface HeaderParamsInterface {
-  localeCode?: string;
+  primaryLocale?: string;
+  secondaryLocale?: string;
+}
+
+function otherLocale(locale: AppLocale): AppLocale {
+  return locale === AppLocale.EN ? AppLocale.AR : AppLocale.EN;
 }
 
 @Builder
 function buildHeader(params: HeaderParamsInterface) {
   Column() {
     Text($r('app.string.list_title'))
-      .fontSize($r('app.float.list_header_size'))
+      .fontSize($r('app.float.list_title_size'))
       .fontWeight(FontWeight.Bold)
       .fontColor($r('app.color.deep_teal'))
     Row() {
-      Text($r('app.string.current_locale'))
+      Text((params.primaryLocale ?? '').toUpperCase())
         .fontSize($r('app.float.list_header_size'))
         .fontWeight(FontWeight.Bold)
         .fontColor($r('app.color.deep_teal'))
-      Text('|')
-        .margin({ start: LengthMetrics.resource($r('app.float.margin_8')) })
+      Text(' · ')
         .fontSize($r('app.float.list_header_size'))
-        .fontWeight(FontWeight.Bold)
-        .fontColor($r('app.color.deep_teal'))
-      Text(params.localeCode?.toUpperCase())
-        .margin({ start: LengthMetrics.resource($r('app.float.margin_8')) })
+        .fontColor($r('app.color.phrase_secondary_text_color'))
+      Text((params.secondaryLocale ?? '').toUpperCase())
         .fontSize($r('app.float.list_header_size'))
-        .fontWeight(FontWeight.Bold)
-        .fontColor($r('app.color.deep_teal'))
+        .fontColor($r('app.color.phrase_secondary_text_color'))
     }
   }
-  .constraintSize({ minHeight: SizeConstants.PERCENT_30 })
   .width(SizeConstants.FULL_WIDTH_PERCENT)
-  .margin({ top: $r('app.float.margin_4') })
+  .padding({ top: $r('app.float.margin_4'), bottom: $r('app.float.margin_8') })
   .alignItems(HorizontalAlign.Center)
   .justifyContent(FlexAlign.End)
 }
@@ -57,17 +58,17 @@ function buildHeader(params: HeaderParamsInterface) {
 struct Index {
   private context: UIContext = this.getUIContext();
   private viewModel: PhrasesViewModel = new PhrasesViewModel();
+  private dataSource: PhrasesDataSource = this.viewModel.loadDataSource();
+  @State private currentLocale: AppLocale = this.viewModel.appLocale;
   private onLocaleToggled: () => void = () => {
     this.viewModel.toggleLocale();
-    this.tabBar1.update({
-      localeCode: this.viewModel.appLocale
-    })
   }
   private tabBar1: ComponentContent<HeaderParamsInterface> =
     new ComponentContent<HeaderParamsInterface>(
       this.context,
       wrapBuilder(buildHeader), {
-      localeCode: this.viewModel.appLocale
+      primaryLocale: this.viewModel.appLocale,
+      secondaryLocale: otherLocale(this.viewModel.appLocale ?? AppLocale.EN)
     });
   private bottomOptions = new ArcButtonOptions({
     label: $r('app.string.toggle_language'),
@@ -79,20 +80,35 @@ struct Index {
     onClick: this.onLocaleToggled
   })
 
+  aboutToAppear(): void {
+    this.viewModel.setOnLocaleChanged((locale) => {
+      this.currentLocale = locale;
+      this.tabBar1.update({
+        primaryLocale: locale,
+        secondaryLocale: otherLocale(locale)
+      });
+    });
+  }
+
+  aboutToDisappear(): void {
+    this.viewModel.clearOnLocaleChanged();
+  }
+
   build() {
     Stack() {
       ArcList({ initialIndex: 0, header: this.tabBar1 }) {
-        LazyForEach(this.viewModel.loadDataSource(), (item: PhraseItem, index: number) => {
+        LazyForEach(this.dataSource, (item: PhraseItem, index: number) => {
           if (item.type === PhraseItemType.TITLE) {
             ArcListItem() {
               PhraseTitleComponent({
                 title: item.text
-              }).margin({ top: index === 0 ? 0 : $r('app.float.margin_4') })
+              }).margin({ top: index === 0 ? 0 : $r('app.float.margin_16') })
             }
           } else {
             ArcListItem() {
               PhraseCardComponent({
-                title: item.text
+                primary: item.primary ?? '',
+                secondary: item.secondary ?? ''
               })
             }
             .width(SizeConstants.WATCH_LIST_WIDTH_PX)
@@ -100,8 +116,9 @@ struct Index {
             .borderRadius($r('app.float.margin_16'))
             .padding($r('app.float.margin_8'))
             .align(Alignment.Center)
+            .margin({ bottom: index === this.dataSource.totalCount() - 1 ? $r('app.float.arc_button_clearance') : 0 })
           }
-        }, (item: PhraseItem, index?: number) => `${item.id}_${index}`)
+        }, (item: PhraseItem, index?: number) => `${item.id}_${this.currentLocale}`)
       }
       .focusable(true)
       .focusOnTouch(true)

@@ -6,23 +6,31 @@
     },
     {
       "name": "app_background",
-      "value": "#FF031C2F"
+      "value": "#FF010F1A"
     },
     {
       "name": "deep_teal",
-      "value": "#58A0C8"
+      "value": "#4A90B8"
     },
     {
       "name": "deep_aqua",
-      "value": "#113F67"
+      "value": "#0D2F4F"
     },
     {
       "name": "card_background_color",
-      "value": "#34699A"
+      "value": "#1E4A6E"
     },
     {
       "name": "card_text_color",
       "value": "#FDF5AA"
+    },
+    {
+      "name": "phrase_title_color",
+      "value": "#FFE566"
+    },
+    {
+      "name": "phrase_secondary_text_color",
+      "value": "#7AADCC"
     }
   ]
 }

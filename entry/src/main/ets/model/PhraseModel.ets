@@ -1,6 +1,7 @@
 export interface PhraseModel {
   id: number;
-  text: ResourceStr;
+  en: string;
+  ar: string;
 }
 
 export interface PhrasesGroup {
@@ -10,71 +11,47 @@ export interface PhrasesGroup {
 }
 
 const GREETINGS_PHRASES: PhraseModel[] = [
-  { id: 1, text: $r('app.string.greeting_hello') },
-  { id: 2, text: $r('app.string.greeting_good_morning') },
-  { id: 3, text: $r('app.string.greeting_good_night') }
+  { id: 1, en: 'Hello', ar: 'مرحبًا' },
+  { id: 2, en: 'Good morning', ar: 'صباح الخير' },
+  { id: 3, en: 'Good night', ar: 'تصبح على خير' }
 ]
 
 const BASIC_PHRASES: PhraseModel[] = [
-  { id: 4, text: $r('app.string.basic_thank_you') },
-  { id: 5, text: $r('app.string.basic_please') },
-  { id: 6, text: $r('app.string.basic_yes') },
-  { id: 7, text: $r('app.string.basic_no') }
+  { id: 4, en: 'Thank you', ar: 'شكرًا' },
+  { id: 5, en: 'Please', ar: 'من فضلك' },
+  { id: 6, en: 'Yes', ar: 'نعم' },
+  { id: 7, en: 'No', ar: 'لا' }
 ];
 
 const HELP_PHRASES: PhraseModel[] = [
-  { id: 8, text: $r('app.string.help_i_need_help') },
-  { id: 9, text: $r('app.string.help_where_is_toilet') },
-  { id: 10, text: $r('app.string.help_call_police') }
+  { id: 8, en: 'I need help', ar: 'أحتاج إلى مساعدة' },
+  { id: 9, en: 'Where is the bathroom?', ar: 'أين الحمام؟' },
+  { id: 10, en: 'Call the police!', ar: 'اتصل بالشرطة!' }
 ];
 
 const TRAVEL_PHRASES: PhraseModel[] = [
-  { id: 11, text: $r('app.string.travel_where_is_airport') },
-  { id: 12, text: $r('app.string.travel_i_have_reservation') },
-  { id: 13, text: $r('app.string.travel_how_much_is_ticket') }
+  { id: 11, en: 'Where is the airport?', ar: 'أين المطار؟' },
+  { id: 12, en: 'I have a reservation', ar: 'لدي حجز' },
+  { id: 13, en: 'How much is the ticket?', ar: 'كم سعر التذكرة؟' }
 ];
 
 const SHOPPING_PHRASES: PhraseModel[] = [
-  { id: 14, text: $r('app.string.shopping_how_much') },
-  { id: 15, text: $r('app.string.shopping_do_you_accept_card') },
-  { id: 16, text: $r('app.string.shopping_i_want_this') }
+  { id: 14, en: 'How much is this?', ar: 'بكم هذا؟' },
+  { id: 15, en: 'Do you accept credit cards?', ar: 'هل تقبلون البطاقات الائتمانية؟' },
+  { id: 16, en: 'I want this one', ar: 'أريد هذا' }
 ];
 
 const EMERGENCY_PHRASES: PhraseModel[] = [
-  { id: 17, text: $r('app.string.emergency_call_ambulance') },
-  { id: 18, text: $r('app.string.emergency_im_lost') },
-  { id: 19, text: $r('app.string.emergency_my_phone_is_stolen') }
+  { id: 17, en: 'Call an ambulance!', ar: 'اتصل بالإسعاف!' },
+  { id: 18, en: 'I am lost', ar: 'لقد ضعت' },
+  { id: 19, en: 'My phone was stolen', ar: 'تمت سرقة هاتفي' }
 ];
 
 export const PHRASES_GROUPS: PhrasesGroup[] = [
-  {
-    id: 1,
-    text: $r('app.string.greetings'),
-    phrases: GREETINGS_PHRASES
-  },
-  {
-    id: 2,
-    text: $r('app.string.basic'),
-    phrases: BASIC_PHRASES
-  },
-  {
-    id: 3,
-    text: $r('app.string.help'),
-    phrases: HELP_PHRASES
-  },
-  {
-    id: 4,
-    text: $r('app.string.travel'),
-    phrases: TRAVEL_PHRASES
-  },
-  {
-    id: 5,
-    text: $r('app.string.shopping'),
-    phrases: SHOPPING_PHRASES
-  },
-  {
-    id: 6,
-    text: $r('app.string.emergency'),
-    phrases: EMERGENCY_PHRASES
-  }
+  { id: 1, text: $r('app.string.greetings'), phrases: GREETINGS_PHRASES },
+  { id: 2, text: $r('app.string.basic'), phrases: BASIC_PHRASES },
+  { id: 3, text: $r('app.string.help'), phrases: HELP_PHRASES },
+  { id: 4, text: $r('app.string.travel'), phrases: TRAVEL_PHRASES },
+  { id: 5, text: $r('app.string.shopping'), phrases: SHOPPING_PHRASES },
+  { id: 6, text: $r('app.string.emergency'), phrases: EMERGENCY_PHRASES }
 ];

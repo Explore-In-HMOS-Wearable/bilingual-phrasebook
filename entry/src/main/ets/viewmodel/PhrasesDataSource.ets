@@ -1,4 +1,5 @@
 import { PhrasesGroup } from '../model/PhraseModel';
+import { AppLocale } from '../model/AppLocale';
 
 export enum PhraseItemType { TITLE, PHRASE }
 
@@ -6,29 +7,45 @@ export interface PhraseItem {
   type: PhraseItemType;
   id: number;
   text: ResourceStr;
+  primary?: string;
+  secondary?: string;
 }
 
 export class PhrasesDataSource implements IDataSource {
   private flatList: PhraseItem[] = [];
   private listeners: DataChangeListener[] = [];
+  private groups: PhrasesGroup[];
 
-  constructor(groups: PhrasesGroup[]) {
+  constructor(groups: PhrasesGroup[], locale: AppLocale) {
+    this.groups = groups;
+    this.buildFlatList(locale);
+  }
+
+  public updateLocale(locale: AppLocale): void {
+    this.buildFlatList(locale);
+    this.listeners.forEach(l => l.onDataReloaded());
+  }
+
+  private buildFlatList(locale: AppLocale): void {
+    this.flatList = [];
     let idCounter = 1;
 
-    for (const group of groups) {
-      // Push group title
+    for (const group of this.groups) {
       this.flatList.push({
         type: PhraseItemType.TITLE,
         id: idCounter++,
         text: group.text
       });
 
-      // Push each phrase
       for (const phrase of group.phrases) {
+        const primary = locale === AppLocale.EN ? phrase.en : phrase.ar;
+        const secondary = locale === AppLocale.EN ? phrase.ar : phrase.en;
         this.flatList.push({
           type: PhraseItemType.PHRASE,
           id: idCounter++,
-          text: phrase.text
+          text: primary,
+          primary: primary,
+          secondary: secondary
         });
       }
     }
