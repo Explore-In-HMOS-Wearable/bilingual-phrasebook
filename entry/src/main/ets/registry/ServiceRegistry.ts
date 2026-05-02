@@ -11,6 +11,10 @@ function setGlobalRegistry(registry: ServiceRegistry): void {
   globalRegistry = registry
 }
 
+function resetGlobalRegistry(): void {
+  globalRegistry = null
+}
+
 /**
  * Registers a method as a service factory.
  * Services can be eager (default) or lazy.
@@ -121,12 +125,15 @@ export class ServiceRegistry {
   }
 
   /**
-   * Clears all services and disposes of any lifecycle hooks.
+   * Disposes all service instances and clears runtime state (instances + factories).
+   * Registration metadata (eagerServices/lazyServices) is intentionally preserved
+   * so that a subsequent build() call can re-initialize without re-running decorators.
    */
   destroy(): void {
     this.instances.forEach(service => service.onDispose?.())
     this.instances.clear()
     this.factories.clear()
+    resetGlobalRegistry()
   }
 
   /**

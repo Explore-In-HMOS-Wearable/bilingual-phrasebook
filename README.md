@@ -1,47 +1,40 @@
-> **Note:** To access all shared projects, get information about environment setup, and view other guides, please visit [Explore-In-HMOS-Wearable Index](https://github.com/Explore-In-HMOS-Wearable/hmos-index).
-
 # Bilingual Phrasebook
 
 A simple bilingual phrasebook app for HarmonyOS Next written in ArkTS.
 
 BilingualPhrasebook is a multilingual app designed to help users quickly access common phrases in both **Arabic** and **English**.
+Each phrase card displays both languages simultaneously — the toggle button switches which language appears as primary (larger, top) and which appears as secondary (smaller, below).
 It supports **RTL** and **LTR** layouts, utilizes localized resources, and adapts the UI direction based on the selected system locale.
 
 # Preview
 
 <div>
-  <img src="./screenshots/preview_en_01.png" width="24%">
-  <img src="./screenshots/preview_en_02.png" width="24%">
-  <img src="./screenshots/preview_ar_01.png" width="24%">
-  <img src="./screenshots/preview_ar_02.png" width="24%">
+  <img src="./screenshots/1.png" width="25%">
+  <img src="./screenshots/2.png" width="25%">
+  <img src="./screenshots/3.png" width="25%">
 </div>
 
 # Use Cases
 
 Bilingual Phrasebook helps users quickly find and practice essential phrases in two languages, making it ideal for travel, language learning, and real-life conversations.
 
-# Technology
-
-## Stack
+# Tech Stack
 
 - **Languages**: ArkTS, Typescript
-- **Frameworks**: HarmonyOS SDK 5.1.0(18)
+- **Frameworks**: HarmonyOS SDK 6.0.0(20)
 - **Tools**: DevEco Studio Version 5.1.0.828
-- **Libraries**:
-    - `@kit.ArkUI`
-    - `@kit.AbilityKit`
-    - `@kit.BasicServicesKit`
-    - `@kit.LocalizationKit`
-    - `@kit.ArkData`
+- **Libraries**: `@kit.ArkUI`, `@kit.AbilityKit`, `@kit.BasicServicesKit`, `@kit.LocalizationKit`, `@kit.ArkData`
 
 ## Localization Kit Usage
 
 This app utilizes the **Localization Kit** to manage multi-language content:
 
-- Uses `$r('app.string.key')` for fetching localized string resources
-- Arabic (RTL) and English (LTR) string files are defined under `resources/base/element/string.json`
-  and `resources/ar/element/string.json`
+- **Phrase content** (bilingual pairs) is defined statically in `PhraseModel.ets` as `{ en, ar }` string pairs — both languages are loaded at once so they can be displayed simultaneously on each card
+- **UI strings** (app title, button labels, category names) are fetched via `$r('app.string.key')` from resource files:
+  - Default (English/LTR): `resources/base/element/string.json`
+  - Arabic (RTL override): `resources/ar/element/string.json`
 - Locale switching is handled within the app using `i18n.System` and User-Preferences `PreferencesManager`
+- `onConfigurationUpdate` in `MyAbilityStage` propagates system-level language changes back into the app
 - Custom `LocaleManager` provides helpers for accessing or reacting to the current language
 
 Example file:
@@ -97,15 +90,10 @@ This allows separation of concerns and improved testability for components like:
 
 # Constraints and Restrictions
 
-## Supported Devices
+- Supported device: Huawei Watch 5
+- Supported locales: `en` and `ar`
 
-- Huawei Watch 5
-
-## Supported Locales
-
-- Only supports two locales: `en` and `ar`
-
-# LICENSE
+# License
 
 Bilingual Phrasebook is distributed under the terms of the MIT License.
 See the [license](/LICENSE) for more information.

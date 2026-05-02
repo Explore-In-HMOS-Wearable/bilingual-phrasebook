@@ -4,7 +4,8 @@ export enum AppLocale {
 }
 
 export function appLocaleFromString(localeStr: string): AppLocale {
-  switch (localeStr.toLowerCase()) {
+  const primaryTag = localeStr.trim().replace(/_/g, '-').split('-')[0].toLowerCase();
+  switch (primaryTag) {
     case AppLocale.EN:
       return AppLocale.EN
     case AppLocale.AR:
